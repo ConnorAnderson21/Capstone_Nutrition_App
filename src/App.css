@@ -1,0 +1,62 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px; 
+  background-color: #ffffff;
+  text-align: center;
+  line-height: 60px; 
+  opacity: 50%;
+}
+
+body {
+  background-image: url('public/—Pngtree—black meat western food banner_1013905.jpg');
+  
+}
+
+#navbar {
+
+}
+
+#MacroCalc {
+  max-width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  padding: 100px;
+  margin-top: 100px;
+  background-color: rgba(190, 190, 190, 0.5);
+  border-radius: 10px;
+  border-color: #ffffff;
+  border-style: solid;
+}
+
+#FoodFinder {
+  max-width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  padding: 100px;
+  margin-top: 100px;
+  background-color: rgba(190, 190, 190, 0.5);
+  border-radius: 10px;
+  border-color: #ffffff;
+  border-style: solid;
+}
+
+.textBubble {
+  margin: ;
+}
+
+
+
