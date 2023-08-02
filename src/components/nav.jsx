@@ -2,8 +2,10 @@ import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import { Link } from "react-router-dom";
-import NavDropdown from 'react-bootstrap/NavDropdown';
-
+// import NavDropdown from 'react-bootstrap/NavDropdown';
+import { useAuth, useUser, useSigninCheck} from "reactfire";
+import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
+import Button from 'react-bootstrap/Button';
 
 
 import { useEffect } from "react";
@@ -11,6 +13,21 @@ import { useEffect } from "react";
 
 
 export function MyNav(props) {
+    const auth=useAuth();
+    const { data:user } = useUser();
+    const { signinStatus } = useSigninCheck();
+
+    const login = async () => {
+        let provider = new GoogleAuthProvider();
+        let u = await signInWithPopup(auth, provider);
+        console.log(u);
+        return u
+    }
+    const logout = async () => {
+        await signOut(auth);
+        
+    }
+
     return (
         <div>
             
@@ -34,17 +51,9 @@ export function MyNav(props) {
 
                             <Nav.Link href="/MyMacros">My Macros</Nav.Link>
 
-                            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.2">
-                                    Another action
-                                </NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                                <NavDropdown.Divider />
-                                <NavDropdown.Item href="#action/3.4">
-                                    Separated link
-                                </NavDropdown.Item>
-                            </NavDropdown>
+                            
+                            
+                            <Button id="loginButton" variant="success" onClick={login}>Log In</Button>{' '}
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

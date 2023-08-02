@@ -32,31 +32,82 @@ body {
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
-  padding: 100px;
-  margin-top: 100px;
+  padding: 50px;
+  margin-top: 50px;
   background-color: rgba(190, 190, 190, 0.5);
   border-radius: 10px;
   border-color: #ffffff;
   border-style: solid;
+  color: #ffffff;
+}
+
+.food-finder-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.food-finder-content {
+  display: flex;
+  max-width: 50%;
+  background-color: rgba(190, 190, 190, 0.5);
+  border-radius: 10px;
+  border-color: #ffffff;
+  border-style: solid;
+}
+
+.food-finder-form {
+  flex: 1;
+  padding: 50px;
+}
+
+.nutrition-card {
+  flex: 1;
+  padding: 30px;
+}
+
+
+#loginButton {
+  justify-content: end;
+
+}
+
+/* #foodcontainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center; 
+  min-height: 100vh;
 }
 
 #FoodFinder {
-  max-width: 50%;
+  flex: 0 0 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 auto;
+  margin: 0 auto; 
   padding: 100px;
   margin-top: 100px;
   background-color: rgba(190, 190, 190, 0.5);
   border-radius: 10px;
   border-color: #ffffff;
   border-style: solid;
-}
-
-.textBubble {
-  margin: ;
+  max-width: 400px;
 }
 
 
+#nutritioncard {
+  flex: 0 0 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  padding: 30px;
+  justify-content: center;
+} */
 
+
+
+/* .textBubble { */
+ 
+/* } */
