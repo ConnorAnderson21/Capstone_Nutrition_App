@@ -37,6 +37,15 @@ function MacroCalc() {
   const [activityFactor, setActivityFactor] = useState(1);
   const [showTotalCalories, setShowTotalCalories] = useState(false);
   const { data:user } = useUser();
+  const [CFP, setCFP] = useState({carbohydrate: 0, protein: 0, fat: 0})
+
+
+  // carbohydrate: (setActivityFactor(parseFloat(value)) * bmr) * .5,
+  // fat: (setActivityFactor(parseFloat(value)) * bmr) * .25,
+  // protein: (setActivityFactor(parseFloat(value)) * bmr) * .25
+
+
+
   
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -49,15 +58,29 @@ function MacroCalc() {
     setBMR(calculatedBMR);
     console.log('BMR:', bmr);
 
+
+    let copyCFP = {
+      carbohydrate: parseInt(((calculatedBMR * activityFactor) * .5) / 4), 
+      protein: parseInt(((calculatedBMR * activityFactor) * .25) / 4), 
+      fat: parseInt(((calculatedBMR * activityFactor) * .25) / 9)
+    };
+
+    setCFP(copyCFP);
+
+  
+
     const formData = {
       ...userData,
       bmr: calculatedBMR,
       activityFactor: parseFloat(activityFactor),
       username: user.displayName,
-      email: user.email
+      email: user.email,
+      carbohydrate: CFP.carbohydrate,
+      fat: CFP.fat,
+      protein: CFP.protein
 
     };
-
+    console.log(formData)
     
       fetch(`http://127.0.0.1:5000/api/submit_form`, {
         method: 'POST',
@@ -74,11 +97,12 @@ function MacroCalc() {
     setShowTotalCalories(true);
   };
 
-  const handleActivityFactorChange = (event) => {
+const handleActivityFactorChange = (event) => {
     const { value } = event.target;
     setActivityFactor(parseFloat(value));
-  };
-
+    };
+  
+  
   return (
     <div id="MacroCalc">
       <Form onSubmit={handleSubmit}>
@@ -142,7 +166,7 @@ function MacroCalc() {
       </Form>
       {showTotalCalories && (
         <div>
-          <h3>BMR: {bmr}</h3>
+          <h3>BMR: {parseInt(bmr)}</h3>
           <Form.Group>
             <Form.Label>Activity Factor:</Form.Label>
             <Form.Select
@@ -157,7 +181,7 @@ function MacroCalc() {
               <option value={1.725}>Very Active (Hard exercise/sports 6-7 days/week)</option>
             </Form.Select>
           </Form.Group>
-          <h4>Total Daily Calorie Needs: {bmr * activityFactor}</h4>
+          <h4>Total Daily Calorie Needs: {parseInt(bmr * activityFactor)}</h4>
         </div>
       )}
 
