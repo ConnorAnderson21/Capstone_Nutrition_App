@@ -68,46 +68,15 @@ body {
 }
 
 
-#loginButton {
+.loginout {
   justify-content: end;
 
 }
 
-/* #foodcontainer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center; 
-  min-height: 100vh;
+.username {
+  font-size: large;
+  font-weight: bold;
+  padding-top: 7px;
+  padding-right: 8px;
 }
 
-#FoodFinder {
-  flex: 0 0 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0 auto; 
-  padding: 100px;
-  margin-top: 100px;
-  background-color: rgba(190, 190, 190, 0.5);
-  border-radius: 10px;
-  border-color: #ffffff;
-  border-style: solid;
-  max-width: 400px;
-}
-
-
-#nutritioncard {
-  flex: 0 0 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: end;
-  padding: 30px;
-  justify-content: center;
-} */
-
-
-
-/* .textBubble { */
- 
-/* } */

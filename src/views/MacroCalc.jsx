@@ -1,8 +1,10 @@
+
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import { useState } from 'react';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
+import { useUser } from 'reactfire';
 
 
 function calculateBMR(userData) {
@@ -25,28 +27,51 @@ function calculateBMR(userData) {
 
 function MacroCalc() {
   const [userData, setUserData] = useState({
-    heightInches: 0,
-    age: 0,
-    weightPounds: 0,
+    heightInches: 70,
+    age: 30,
+    weightPounds: 160,
     gender: ''
   });
 
   const [bmr, setBMR] = useState(0);
   const [activityFactor, setActivityFactor] = useState(1);
   const [showTotalCalories, setShowTotalCalories] = useState(false);
-
+  const { data:user } = useUser();
+  
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setUserData((prevUserData) => ({ ...prevUserData, [name]: value }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const calculatedBMR = calculateBMR(userData);
-    setBMR(calculatedBMR)
+    setBMR(calculatedBMR);
     console.log('BMR:', bmr);
-    setShowTotalCalories(true);
+
+    const formData = {
+      ...userData,
+      bmr: calculatedBMR,
+      activityFactor: parseFloat(activityFactor),
+      username: user.displayName,
+      email: user.email
+
+    };
+
     
+      fetch(`http://127.0.0.1:5000/api/submit_form`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      })
+
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+    
+
+    setShowTotalCalories(true);
   };
 
   const handleActivityFactorChange = (event) => {
@@ -125,6 +150,7 @@ function MacroCalc() {
               value={activityFactor}
               onChange={handleActivityFactorChange}
             >
+              <option>Select Activity Level</option>
               <option value={1.2}>Sedentary (Little to no exercise)</option>
               <option value={1.375}>Light Activity (Light exercise/sports 1-3 days/week)</option>
               <option value={1.55}>Moderate Activity (Moderate exercise/sports 3-5 days/week)</option>

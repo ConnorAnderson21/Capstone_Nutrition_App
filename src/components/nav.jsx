@@ -50,10 +50,19 @@ export function MyNav(props) {
                             <Nav.Link href="/FoodFinder">Food Finder</Nav.Link>
 
                             <Nav.Link href="/MyMacros">My Macros</Nav.Link>
-
+                            <br />
+                            {
+                            signinStatus === 'loading'?
+                            <Button variant="info" disabled>Loading...</Button> :
+                            user ?
+                            <>
+                            <span className="username">Welcome {user.displayName}</span>
+                            <Button className="loginout" variant="danger" onClick={logout}>Log Out</Button>
+                            </> :
+                            <Button className="loginout" variant="success" onClick={login}> Log In</Button>
+                        }
                             
-                            
-                            <Button id="loginButton" variant="success" onClick={login}>Log In</Button>{' '}
+                            {/* <Button id="loginButton" variant="success" onClick={login}>Log In</Button>{' '} */}
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
