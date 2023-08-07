@@ -1,23 +1,37 @@
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import { useUser } from "reactfire";
-
+import axios from 'axios';
 import Table from 'react-bootstrap/Table';
+import { useState } from 'react';
 
 
 
+function MyMacros(props) {
+  // const { data:user } = useUser();
+
+  // const getMyMacros = async () => {
+  //   console.log(user)
+  //       let response = await axios.post(`http://127.0.0.1:5000/api/get_macros`, JSON.stringify(user), {
+  //         headers: { "Content-Type": "application/json" }
+  //     });
+        
+  //       return response.status === 200 ? response.data : null
+
+  //   }
+  //   const loadMyMacros = async () => {
+  //       let data = await getMyMacros();
+
+  //       setMyMacros(data.get_macros);
+  //   }
 
 
-function MyMacros({ calculatedBMR, activityFactor, bmr }) {
-
-  const formData = {
-    
-    carbohydrate: (parseFloat(activityFactor) * bmr) * 0.5,
-    fat: (parseFloat(activityFactor) * bmr) * 0.25,
-    protein: (parseFloat(activityFactor) * bmr) * 0.25,
-  };
+  //   const [get_macros, setMyMacros] = useState(() => loadMyMacros());
+  
   return (
+
      <div id="MacroTable">
+      
     <Table id="table">
       <thead>
         <tr>
@@ -30,30 +44,31 @@ function MyMacros({ calculatedBMR, activityFactor, bmr }) {
       <tbody>
             <tr>
               <td>Calories</td>
-              <td>{bmr * activityFactor}</td>
+              <td></td>
               <td></td>
               <td></td>
             </tr>
             <tr>
               <td>Carbohydrate</td>
-              <td>{formData.carbohydrate}</td>
+              <td></td>
               <td></td>
               <td></td>
             </tr>
             <tr>
               <td>Protein</td>
-              <td>{formData.protein}</td>
+              <td></td>
               <td></td>
               <td></td>
             </tr>
             <tr>
               <td>Fat</td>
-              <td>{formData.fat}</td>
+              <td></td>
               <td></td>
               <td></td>
             </tr>
           </tbody>
         </Table>
+        
     </div>
   );
 }

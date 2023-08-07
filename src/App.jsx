@@ -17,6 +17,8 @@ function App() {
         '/paella.png','/pizza.png','/ramen.png','/seafood.png','/spaghetti.png',
         '/taco.png','/vegetable.png',
         ]);
+  const [dailyMac, setDailyMac] = useState(0)
+
 
   return (
     <>
@@ -24,8 +26,8 @@ function App() {
     <Routes>
       <Route children path='/' element={<Home />} />
       <Route children path='/MacroCalc' element={<MacroCalc />} />
-      <Route children path='/FoodFinder' element={<FoodFinder />} />
-      <Route children path='/MyMacros' element={<MyMacros />} />
+      <Route children path='/FoodFinder' element={<FoodFinder dailyMac={dailyMac} setDailyMac={setDailyMac} />} />
+      <Route children path='/MyMacros' element={<MyMacros dailyMac={dailyMac}/>} />
     </Routes>
       
 

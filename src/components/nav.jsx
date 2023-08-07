@@ -33,7 +33,7 @@ export function MyNav(props) {
             
             <Navbar id="navbar" expand="lg" className="bg-body-tertiary">
                 <Container id="navbar">
-                    <Navbar.Brand href="#home">
+                    <Navbar.Brand href="/home">
                         <img
                             alt=""
                             src={props.icons[Math.floor(Math.random() * props.icons.length)]}

@@ -5,7 +5,7 @@ import { ListGroup } from 'react-bootstrap';
 import axios from 'axios';
 import { useState } from 'react';
 
-function FoodFinder() {
+function FoodFinder(props) {
   const [foodInput, setFoodInput] = useState('');
   const [nutritionData, setNutritionData] = useState(null);
 
